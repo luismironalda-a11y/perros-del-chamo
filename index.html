@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perros Calientes - El Chamo</title>
+    <style>
+        /* --- ESTILOS GENERALES (CSS) --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #121212;
+            color: #fff;
+        }
+
+        header {
+            background-color: #ffcc00;
+            color: #000;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(255, 204, 0, 0.3);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            font-weight: 900;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            font-style: italic;
+            margin-top: 5px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #ffcc00;
+            font-size: 1.8rem;
+        }
+
+        /* --- SECCIÓN MENÚ --- */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .menu-item {
+            background-color: #1e1e1e;
+            border: 2px solid #333;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-5px);
+            border-color: #ffcc00;
+        }
+
+        .menu-item h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .menu-item .descripcion {
+            color: #aaa;
+            font-size: 0.95rem;
+            height: 50px;
+            margin-bottom: 15px;
+        }
+
+        .menu-item .precio {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #ffcc00;
+            margin-bottom: 15px;
+        }
+
+        .btn-agregar {
+            background-color: #ffcc00;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background 0.2s;
+            width: 100%;
+        }
+
+        .btn-agregar:hover {
+            background-color: #e6b800;
+        }
+
+        /* --- SECCIÓN PEDIDO --- */
+        .carrito-section {
+            background-color: #1e1e1e;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 40px;
+            border: 1px solid #ffcc00;
+        }
+
+        .lista-pedido {
+            list-style: none;
+            margin-bottom: 15px;
+        }
+
+        .lista-pedido li {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #333;
+        }
+
+        .total-box {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-top: 15px;
+            color: #ffcc00;
+        }
+
+        .btn-ordenar {
+            background-color: #25d366;
+            color: #fff;
+            border: none;
+            padding: 15px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .btn-ordenar:hover {
+            background-color: #1ebd58;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            margin-top: 40px;
+            font-size: 0.9rem;
+            border-top: 1px solid #222;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ENCABEZADO -->
+    <header>
+        <h1>🌭 El Chamo 🌭</h1>
+        <p>Los mejores perros calientes con todo el sabor urbano</p>
+    </header>
+
+    <div class="container">
+        
+        <!-- SECCIÓN DEL MENÚ -->
+        <h2>Nuestro Menú</h2>
+        <div class="menu-grid">
+            
+            <!-- Perro 1 -->
+            <div class="menu-item">
+                <h3>El Chamo Clásico</h3>
+                <p class="descripcion">Salchicha premium, papitas ralladas, repollo, cebolla y las tres salsas clásicas.</p>
+                <p class="precio">$2.50</p>
+                <button class="btn-agregar" onclick="agregarAlPedido('El Chamo Clásico', 2.50)">Agregar al Pedido</button>
+            </div>
+
+            <!-- Perro 2 -->
+            <div class="menu-item">
+                <h3>El Chamo Con Todo</h3>
+                <p class="descripcion">Clásico + queso de año rallado, tococineta crocante y salsa de la casa.</p>
+                <p class="precio">$4.00</p>
+                <button class="btn-agregar" onclick="agregarAlPedido('El Chamo Con Todo', 4.00)">Agregar al Pedido</button>
+            </div>
+
+            <!-- Perro 3 -->
+            <div class="menu-item">
+                <h3>El Súper Chamo</h3>
+                <p class="descripcion">Doble salchicha, extra queso fundido, maíz tierno, tocireta y lluvia de papitas.</p>
+                <p class="precio">$5.50</p>
+                <button class="btn-agregar" onclick="agregarAlPedido('El Súper Chamo', 5.50)">Agregar al Pedido</button>
+            </div>
+
+        </div>
+
+        <!-- SECCIÓN DEL CARRITO / PEDIDO -->
+        <div class="carrito-section">
+            <h2>Tu Pedido</h2>
+            <ul id="lista-pedido" class="lista-pedido">
+                <!-- Aquí se irán sumando los perros calientes -->
+                <p style="color: #666; text-align: center;" id="carrito-vacio">El pedido está vacío</p>
+            </ul>
+            <div class="total-box">
+                <span>Total:</span>
+                <span id="total-precio">$0.00</span>
+            </div>
+            <button class="btn-ordenar" onclick="enviarPedido()">Confirmar Orden por WhatsApp</button>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 El Chamo Perros Calientes. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- --- LÓGICA (JAVASCRIPT) --- -->
+    <script>
+        let pedido = [];
+        let total = 0;
+
+        function agregarAlPedido(nombre, precio) {
+            // Quitar el mensaje de carrito vacío si existe
+            const mensajeVacio = document.getElementById('carrito-vacio');
+            if (mensajeVacio) mensajeVacio.remove();
+
+            // Agregar al arreglo del pedido
+            pedido.push({ nombre, precio });
+            total += precio;
+
+            // Actualizar la lista en pantalla
+            const lista = document.getElementById('lista-pedido');
+            const nuevoItem = document.createElement('li');
+            nuevoItem.innerHTML = `<span>${nombre}</span> <span>$${precio.toFixed(2)}</span>`;
+            lista.appendChild(nuevoItem);
+
+            // Actualizar el total en pantalla
+            document.getElementById('total-precio').innerText = `$${total.toFixed(2)}`;
+        }
+
+        function enviarPedido() {
+            if (pedido.length === 0) {
+                alert("¡Primero agrega un perro caliente a tu pedido!");
+                return;
+            }
+            alert("¡Pedido confirmado! Total a pagar: $" + total.toFixed(2));
+        }
+    </script>
+
+</body>
+</html>
